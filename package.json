@@ -6,12 +6,14 @@
   "scripts": {
     "build-app": "git pull && npm run build-client && npm install && npm start",
     "build-client": "mkdir -p public && cd client && npm run build-app && cd ..",
-    "start": "nodemon index.js"
+    "start": "nodemon --watch server server/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "express": "^4.18.1"
   }
 }

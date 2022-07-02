@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      HELLOO!!!!!!
+      HELLOO!!!!!! click here for more info
     </p>
     <button @click="getInfo">click me</button>
     <div v-if="loading.value">loading...</div>
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
   name: 'HelloWorld',
   props: {
@@ -28,33 +30,10 @@ export default {
       console.log("hi");
       this.fetchData();
     },
-    fetchData() {
-      console.log('hello');
-      this.loading.value = true;
-      // I prefer to use fetch
-      // you can use use axios as an alternative
-      return fetch('http://jsonplaceholder.typicode.com/posts', {
-        method: 'get',
-        headers: {
-          'content-type': 'application/json'
-        }
-      })
-      .then(res => {
-        console.log('res', res);
-        // a non-200 response code
-        if (!res.ok) {
-          // create error instance with HTTP status text
-          const error = new Error(res.statusText);
-          error.json = res.json();
-          throw error;
-        }
-        else {
-          this.data = res.body;
-        }
-      })
-      .then(() => {
-        this.loading.value = false;
-      });
+    async fetchData() {
+    let res = await axios.get("api/specificRoute");
+    console.log('res', res);
+    this.data = res.data;
     },
   },
 }
