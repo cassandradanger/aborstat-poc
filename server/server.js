@@ -9,7 +9,7 @@ app.use(bodyParser.json()); // needed for angular requests
 app.use(express.static('public'));
 
 /** ---------- ROUTES ---------- **/
-app.use('/api/specificRoute', specificRoute);
+app.use('/api/info', specificRoute);
 
 // listen on the port
 app.listen(port, () => {

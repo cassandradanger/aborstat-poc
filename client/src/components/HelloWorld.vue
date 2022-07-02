@@ -31,7 +31,7 @@ export default {
       this.fetchData();
     },
     async fetchData() {
-    let res = await axios.get("api/specificRoute");
+    let res = await axios.get("api/info");
     console.log('res', res);
     this.data = res.data;
     },
